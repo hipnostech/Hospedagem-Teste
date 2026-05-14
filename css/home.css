@@ -1,0 +1,472 @@
+/* Estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Faz os links âncora (#informacoes, #planos, #contato) rolarem suavemente */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ─── TRANSIÇÃO ENTRE PÁGINAS (CSS puro, sem JavaScript) ───────────────────
+   A View Transitions API do navegador intercepta automaticamente qualquer
+   navegação entre páginas e aplica as animações definidas abaixo.
+   Suporte: Chrome 126+, Edge 126+.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Ativa as transições automáticas ao clicar em qualquer link da página */
+@view-transition {
+    navigation: auto;
+}
+
+/* Página ATUAL (que vai sair): desliza para a esquerda e desaparece */
+::view-transition-old(root) {
+    animation: pagina-sair 0.45s cubic-bezier(0.77, 0, 0.18, 1) both;
+}
+
+/* Nova página (que vai entrar): varre da direita para o centro */
+::view-transition-new(root) {
+    animation: pagina-entrar 0.45s cubic-bezier(0.77, 0, 0.18, 1) both;
+}
+
+/* Corta a tela progressivamente da direita — efeito de scan saindo */
+@keyframes pagina-sair {
+    from { clip-path: inset(0 0% 0 0);    opacity: 1;   }
+    to   { clip-path: inset(0 100% 0 0);  opacity: 0.3; }
+}
+
+/* Revela a tela progressivamente da esquerda — efeito de scan entrando */
+@keyframes pagina-entrar {
+    from { clip-path: inset(0 0 0 100%);  opacity: 0.3; }
+    to   { clip-path: inset(0 0 0 0%);    opacity: 1;   }
+}
+
+.limitar-secao {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+
+/* Topo da página */
+.container-topo {
+    position: relative;
+    padding: 35px 0px;
+}
+
+.topo-logo {
+    position: relative;
+}
+
+.topo-logo img {
+   width: 80px;
+}
+
+.topo-logo div {
+    position: absolute;
+    top: 0;
+    left:95px;
+}
+
+.topo-logo p {
+    font-weight: 600;
+    color: #2f86d6;
+}
+
+.topo-links {
+    position: absolute;
+    top: 65px;
+    right: 0;
+}
+
+.topo-links a {
+    font-size: 18px;
+    color: #233032;
+    text-decoration: none;
+    padding: 0px 10px;
+    font-weight: 600;
+    /* Necessário para posicionar a linha animada do hover */
+    position: relative;
+    /* Suaviza a mudança de cor ao passar o mouse */
+    transition: color 0.3s ease;
+}
+
+/* Banner da página */
+.secao-banner {
+    background-color: #2f86d6;
+}
+
+.container-banner {
+    position: relative;
+    padding: 180px 0px;
+}
+
+.container-banner div{
+    color: #fff;
+    width: 470px;
+}
+
+.container-banner div p {
+    font-size: 16px;
+    line-height: 26px;
+    word-spacing: 3px;
+}
+
+.container-banner div h2 {
+    font-size: 28px;
+    margin: 20px 0px;
+    line-height: 40px;
+}
+
+.container-banner img {
+    width: 50%;
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+
+/* Primeiro anúncio */
+.secao-primeiro-anuncio {
+     background-color: #23303e;
+    color: #fff;
+}
+
+.container-primeiro-anuncio {
+    position: relative;
+    padding: 40px 0px;
+}
+
+.container-primeiro-anuncio div {
+    width: 600px;
+}
+
+.container-primeiro-anuncio div h2 {
+    margin-bottom: 5px;
+}
+
+.container-primeiro-anuncio a {
+    position:absolute;
+    top: 40px;
+    right: 0;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #2f86d6;
+    text-align: center;
+    cursor: pointer;
+}
+
+.container-primeiro-anuncio a img {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 20px;
+    margin-left: 20px;
+}
+
+.container-primeiro-anuncio a span {
+    margin-left: 30px;
+}
+
+/* Seção informações */
+
+.secao-informacoes {
+    padding: 100px 0px;
+    text-align: center;
+}
+
+.secao-informacoes h2 {
+    width: 900px;
+    font-size: 32px;
+    margin:0px auto 60px;
+}
+
+.secao-informacoes h2 span {
+    color: #2f86d6;
+}
+
+.container-informacoes {
+    position: relative;
+    height: 240px;
+}
+
+.container-informacoes div {
+    position: absolute;
+    width: 33%;
+    top: 0;
+    border-radius: 12px;
+    background: #fff;
+    /* Sombra discreta no estado normal para os cards se destacarem do fundo */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    /* Anima o levitar e a sombra azul no hover */
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.container-informacoes div img {
+    width: 100px;
+}
+
+.card2 {
+    left: 343px;
+}
+
+.card3 {
+    right: 0;
+}
+
+.container-informacoes div h3 {
+    margin: 20px;
+}
+
+/* Seção planos */
+.secao-planos {
+    padding: 100px 0px;
+    background-color: #f1f3f7;
+}
+
+.secao-planos h2 {
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 32px;
+}
+
+.secao-planos h2 span {
+    color: #2f86d6;
+}
+
+table {
+    border-radius: 4px;
+    margin: auto;
+    box-shadow: 0px 2px 40px 15px rgba(47,134,214,1);
+}
+
+table thead th {
+    text-align: center;
+    padding: 20px 0px;
+    background-color: #fff;
+}
+
+table thead th h3 {
+    margin-bottom: 20px;
+}
+
+table thead th img {
+    width: 100px;
+    margin: auto;
+}
+
+table thead th p {
+    max-width: 150px;
+    margin: auto;
+    padding-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #a89f9f;
+}
+
+table tbody td {
+    text-align: center;
+    padding: 15px;
+    width: 250px;
+    max-width: 1024px;
+    font-weight: 500;
+    /* Permite que a cor de fundo mude suavemente no hover da linha */
+    transition: background-color 0.2s ease;
+}
+
+.linha-impar {
+    background-color: #f6f6f6;
+}
+
+.linha-par {
+    background-color: #fff;
+}
+
+/* Seção segundo anúncio */
+.secao-segundo-anuncio {
+    background-color: #2f86d6;
+}
+
+.container-segundo-anuncio {
+    position: relative;
+    padding: 40px 0px;
+}
+
+.container-segundo-anuncio h2 {
+    color: #fff;
+    width: 550px;
+}
+
+.container-segundo-anuncio a {
+    position:absolute;
+    top: 40px;
+    right: 0;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #233032;
+    text-align: center;
+    cursor: pointer;
+}
+
+.container-segundo-anuncio a img {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 20px;
+    margin-left: 20px;
+}
+
+.container-segundo-anuncio a span {
+    margin-left: 30px;
+}
+
+/* Rodapé */
+.rodape-logo {
+    width: 320px;
+    position: relative;
+    margin: 70px auto 40px;
+}
+
+.rodape-logo img {
+    width: 80px;
+}
+
+.rodape-logo div {
+    position: absolute;
+    top: 0;
+    left:95px;
+}
+
+.rodape-logo p {
+    font-weight: 600;
+    color: #2f86d6;
+}
+
+.container-contatos {
+    text-align: center;
+    margin-bottom: 50px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.container-copyright {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    padding: 20px 0px;
+    background-color: #f1f3f7;
+}
+
+.container-copyright span {
+    color: #2f86d6;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   MELHORIAS VISUAIS — Efeitos tecnológicos
+   ════════════════════════════════════════════════════════════ */
+
+/* ── 1. HEADER FIXO COM VIDRO (glassmorphism) ───────────────
+   Fica preso no topo ao rolar a página. O fundo semi-transparente
+   com desfoque (backdrop-filter) cria o visual de painel tech. */
+.topo {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px); /* compatibilidade Safari */
+    box-shadow: 0 2px 24px rgba(47, 134, 214, 0.12);
+}
+
+/* ── 2. LINHA DE NEON NO TOPO DO HEADER ─────────────────────
+   Faixa fina com gradiente azul que imita bordas luminosas
+   de dashboards e interfaces de ficção científica. */
+.topo::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #2f86d6    30%,
+        #7fc4ff    50%,
+        #2f86d6    70%,
+        transparent 100%
+    );
+    box-shadow: 0 0 12px rgba(47, 134, 214, 0.6);
+}
+
+/* ── 3. LINHA ANIMADA NOS LINKS DO MENU (hover) ─────────────
+   Pseudo-elemento invisível que cresce da esquerda para a direita
+   ao passar o mouse — efeito de sublinhado que se "desenha". */
+.topo-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 10px;
+    width: calc(100% - 20px); /* desconta o padding dos dois lados */
+    height: 2px;
+    background: #2f86d6;
+    /* Começa comprimido (invisível) */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* Cor azul no texto do link ao passar o mouse */
+.topo-links a:hover {
+    color: #2f86d6;
+}
+
+/* Expande a linha até 100% da largura */
+.topo-links a:hover::after {
+    transform: scaleX(1);
+}
+
+/* ── 4. CARDS DE INFORMAÇÃO — EFEITO DE LEVITAR ─────────────
+   O card sobe 10px e ganha sombra azul suave no hover,
+   criando sensação de profundidade na página. */
+.container-informacoes div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(47, 134, 214, 0.22);
+}
+
+/* ── 5. BOTÕES CTA — PULSO DE NEON ──────────────────────────
+   A sombra azul expande e retrai em loop, como um sinal
+   de radar ou botão de interface de controle. */
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(47, 134, 214, 0.45); }
+    50%       { box-shadow: 0 4px 35px rgba(47, 134, 214, 0.9),
+                            0 0  60px rgba(47, 134, 214, 0.25); }
+}
+
+.container-primeiro-anuncio a,
+.container-segundo-anuncio a {
+    animation: glow-pulse 2.5s ease-in-out infinite;
+    transition: transform 0.25s ease;
+}
+
+/* Leve aumento e elevação do botão ao passar o mouse */
+.container-primeiro-anuncio a:hover,
+.container-segundo-anuncio a:hover {
+    transform: scale(1.06) translateY(-3px);
+}
+
+/* ── 6. TABELA — DESTAQUE AZUL NA LINHA AO HOVER ────────────
+   Ao passar o mouse em qualquer linha, todas as células
+   ficam com um fundo azul translúcido — facilita a leitura. */
+table tbody tr:hover td {
+    background-color: rgba(47, 134, 214, 0.1);
+}
